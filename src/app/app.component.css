@@ -1,0 +1,15 @@
+.container {
+  
+  padding-top: 50px;
+  padding-right: 30px;
+  
+  width: auto;
+  
+}
+
+.logo {
+  box-sizing: border-box;
+  padding-bottom: 40px;
+  padding-top: 20px;
+  width: 15%;
+}

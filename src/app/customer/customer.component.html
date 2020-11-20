@@ -1,0 +1,54 @@
+<div class="row">
+    <div class="col-md-12">
+        <form [formGroup]="f" (ngSubmit)="onSubmit()">
+            <input type="hidden" formControlName="$key">
+            <div class="form-group">
+                <label>Nome Completo:</label>
+                <input type="text" formControlName="fullName" class="form-control" placeholder="Insira Seu Nome Completo" [ngClass]="{'is-invalid': submitted && f.get('fullName').errors}">
+                <div class="invalid-feedback" *ngIf="submitted && f.get('fullName').errors" >
+                    Insira um nome válido!
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Email:</label>
+                <input type="email" formControlName="email" class="form-control" placeholder="ex: teste@teste.com" [ngClass]="{'is-invalid': submitted && f.get('email').errors}">
+                <div class="invalid-feedback" *ngIf="submitted && f.get('email').errors">
+                    <div *ngIf="f.get('email').errors.required">
+                        Por favor insira um e-mail
+                    </div>
+                    <div *ngIf="f.get('email').errors.email">
+                        Email precisa ter @ !
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="phone">Celular:</label>
+                <input type="tel" formControlName="mobile" class="form-control" placeholder="(xx) xxxxx-xxxx" 
+                [ngClass]="{'is-invalid':submitted && f.get('mobile').errors}">
+                <div *ngIf="submitted && f.get('mobile').errors" class="invalid-feedback">
+                    <div *ngIf="f.get('mobile').errors.required">
+                        Por favor insira um número de celular!
+                    </div>
+                    <div *ngIf="f.get('mobile').errors.minlength">
+                        O Celular precisa ter pelo menos 8 dígitos
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>CPF:</label>
+                <input type="number" formControlName="cpf" class="form-control" placeholder="Insira o cpf (apenas números)">
+            </div>
+            <div class="form-group">
+                <label>Data de Nascimento:</label>
+                <input type="date" formControlName="birthdate" class="form-control" placeholder="xx/xx/xxxx">
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Enviar" class="btn btn-info">
+            </div>
+        </form>
+        <div class="alert alert-info" *ngIf="showSuccessMessage">Enviado com Sucesso.</div>
+    </div>
+    <div class="col-md-12">
+        <app-customer-list></app-customer-list>
+    </div>
+</div>
